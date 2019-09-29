@@ -10,13 +10,10 @@ export class Header extends Component {
             Features
           </a>
           <a className="p-2 text-dark" href="#">
-            Enterprise
-          </a>
-          <a className="p-2 text-dark" href="#">
             Support
           </a>
           <a className="p-2 text-dark" href="#">
-            Pricing
+            Clients
           </a>
         </nav>
         <a className="btn btn-outline-primary" href="#">
