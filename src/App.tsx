@@ -1,7 +1,8 @@
 // @flow strict
 import React, { Component } from 'react';
 
-import Header from '~components/Header';
+import Header from '~components/common/Header';
+import Home from '~components/pages/Home';
 
 import './assets/scss/styles.scss';
 
@@ -10,9 +11,7 @@ class App extends Component {
     return (
       <section>
         <Header />
-        <div className="mt-3">
-          <h1 className="text-center">My dashboard</h1>
-        </div>
+        <Home />
       </section>
     );
   }
