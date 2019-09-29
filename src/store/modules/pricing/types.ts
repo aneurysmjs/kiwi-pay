@@ -2,8 +2,8 @@
 export interface Pricing {
   heading: string;
   price: number;
-  users: number;
-  emailSupport: string;
+  transactions: number | string;
+  fee: number | string;
   customerSupport: string;
 }
 
