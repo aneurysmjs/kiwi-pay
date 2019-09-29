@@ -1,0 +1,47 @@
+{
+  "name": "money-onboard",
+  "version": "1.0.0",
+  "main": "src/main.tsx",
+  "repository": "git@github.com:aneurysmjs/money-onboard.git",
+  "author": "jero <aneurysmjs@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "commit": "git-cz",
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/plugin-proposal-class-properties": "7.5.5",
+    "@babel/plugin-syntax-async-generators": "7.2.0",
+    "@babel/preset-env": "7.5.5",
+    "@babel/preset-flow": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "@types/react": "16.9.3",
+    "@types/react-dom": "16.9.1",
+    "@typescript-eslint/eslint-plugin": "2.3.1",
+    "@typescript-eslint/parser": "2.3.1",
+    "commitizen": "4.0.3",
+    "cz-conventional-changelog": "3.0.2",
+    "eslint": "6.5.0",
+    "eslint-plugin-react": "7.14.3",
+    "flow-bin": "0.104.0",
+    "flow-typed": "2.6.1",
+    "node-sass": "4.12.0",
+    "parcel-bundler": "1.12.3",
+    "sass": "1.22.9",
+    "typescript": "3.6.3"
+  },
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "node-uuid": "1.4.8",
+    "ramda": "0.26.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  }
+}
