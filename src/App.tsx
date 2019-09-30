@@ -1,20 +1,9 @@
-// @flow strict
-import React, { Component } from 'react';
+import React from 'react';
 
-import Header from '~components/common/Header';
-import Home from '~components/pages/Home';
+import Routing from '~/components/routing';
 
 import './assets/scss/styles.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <section>
-        <Header />
-        <Home />
-      </section>
-    );
-  }
-}
+const App = (): JSX.Element => <Routing />;
 
 export default App;
