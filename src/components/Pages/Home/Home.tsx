@@ -29,7 +29,7 @@ class Home extends Component<PropsType> {
 
     return (
       <div className="container">
-        <h1 className="text-center mb-3">My dashboard</h1>
+        <h1 className="text-center mb-3">Kiwi Pay</h1>
         <button
           type="button"
           onClick={this.handlePricing}
