@@ -3,9 +3,9 @@ import React from 'react';
 import Header from '~/components/common/Header';
 import Footer from '~/components/common/Footer';
 
-type PropsType = {
+interface PropsType {
   children: Array<JSX.Element> | JSX.Element;
-};
+}
 
 const Layout = (props: PropsType): JSX.Element => (
   <main className="d-flex flex-column">
