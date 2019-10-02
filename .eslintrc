@@ -15,7 +15,8 @@
   "plugins": [
     "import",
     "@typescript-eslint", 
-    "react", 
+    "react",
+    "react-hooks",
     "jsx-a11y"
   ],
   "settings": {
@@ -36,6 +37,8 @@
   "rules": {
     "@typescript-eslint/indent": ["error", 2],
     "react/jsx-uses-vars": "error",
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
