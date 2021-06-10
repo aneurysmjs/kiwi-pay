@@ -1,57 +1,45 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, FunctionComponent } from 'react';
+import { useSelector } from 'react-redux';
 
-import { AppState } from '~/store/helpers/configureStore';
-import { PricingState } from '~/store/modules/pricing/types';
+import { getPricingState } from '~/store/modules/pricing/selectors';
 import PricingCard from '~/components/common/PricingCard';
 
-interface PropsType {
-  pricing: PricingState;
-}
+const defaultState = {
+  isPricingOpened: false,
+};
 
-class Home extends Component<PropsType> {
-  state = {
-    isPricingOpened: false,
-  };
+const Home: FunctionComponent = () => {
+  const app = useSelector(getPricingState);
 
-  handlePricing = (): void => {
-    const { isPricingOpened } = this.state;
-    this.setState({
+  const { pricingCards } = app;
+  const [state, setState] = useState(defaultState);
+
+  const { isPricingOpened } = state;
+
+  const handlePricing = (): void => {
+    setState({
+      ...state,
       isPricingOpened: !isPricingOpened,
     });
   };
 
-  render(): JSX.Element {
-    const {
-      pricing: { pricingCards },
-    } = this.props;
-    const { isPricingOpened } = this.state;
+  return (
+    <div className="container">
+      <h1 className="text-center mb-3">Kiwi Pay</h1>
+      <button
+        type="button"
+        onClick={handlePricing}
+        className="btn btn-lg btn-block btn-outline-primary"
+      >
+        Display Pricing Table
+      </button>
+      {isPricingOpened ? (
+        <div className="card-deck my-4 text-center">
+          {pricingCards && pricingCards.map(card => <PricingCard key={card.heading} {...card} />)}
+        </div>
+      ) : null}
+    </div>
+  );
+};
 
-    return (
-      <div className="container">
-        <h1 className="text-center mb-3">Kiwi Pay</h1>
-        <button
-          type="button"
-          onClick={this.handlePricing}
-          className="btn btn-lg btn-block btn-outline-primary"
-        >
-          Display Pricing Table
-        </button>
-        {isPricingOpened ? (
-          <div className="card-deck my-4 text-center">
-            {pricingCards && pricingCards.map(card => <PricingCard key={card.heading} {...card} />)}
-          </div>
-        ) : null}
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state: AppState): AppState => ({
-  pricing: state.pricing,
-});
-
-export default connect(
-  mapStateToProps,
-  null,
-)(Home);
+export default Home;

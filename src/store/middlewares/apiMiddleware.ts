@@ -41,15 +41,15 @@ const apiMiddleware: Middleware = ({ dispatch, getState }) => next => action => 
     type: requestType,
   });
 
-  return (async () => {
+  (async () => {
     try {
       const response = await callAPI();
-      return dispatch({
+      dispatch({
         payload: { response },
         type: successType,
       });
     } catch (error) {
-      return dispatch({
+      dispatch({
         payload: { error },
         type: failureType,
       });
