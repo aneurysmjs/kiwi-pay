@@ -1,6 +1,6 @@
 // Describing the shape of the pricing's slice of state
 export interface Pricing {
-  id: numbe;
+  id: number;
   heading: string;
   price: number;
   transactions: number | string;

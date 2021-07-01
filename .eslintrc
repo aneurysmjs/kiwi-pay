@@ -5,12 +5,12 @@
     "plugin:@typescript-eslint/recommended", 
     "plugin:react/recommended",
     // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    // "prettier/@typescript-eslint",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
   ],
   "plugins": [
     "import",
@@ -39,6 +39,7 @@
     "react/jsx-uses-vars": "error",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "import/extensions": "off"
   }
 }

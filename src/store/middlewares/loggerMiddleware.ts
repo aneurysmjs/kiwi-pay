@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { Middleware } from 'redux';
 
-const logger: Middleware = store => next => action => {
+const logger: Middleware = (store) => (next) => (action) => {
   if (!console.group) {
     return next;
   }
+
   console.group(action.type);
   console.log('%c prev state', 'color: gray', store.getState());
   console.log('%c action', 'color: blue', action);
