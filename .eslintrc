@@ -32,14 +32,20 @@
     "sourceType": "module" // Allows for the use of imports
   },
   "rules": {
-    "@typescript-eslint/indent": ["error", 2],
-    "react/jsx-uses-vars": "error",
+    "indent": "off",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    /* @typescript-eslint */
+    // Eslint's `indent` rule and Prettier's indentation styles do not match
+    // they're completely separate implementations
+    // see @link https://github.com/eslint/eslint/issues/10930
+    "@typescript-eslint/indent": "off",
+    /* import */
+    "import/extensions": "off",
+    /* react-hooks */
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "import/extensions": "off",
-
-    //
+    /* react */
+    "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off"
