@@ -37,6 +37,11 @@
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "import/extensions": "off"
+    "import/extensions": "off",
+
+    //
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 }
