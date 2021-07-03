@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable consistent-return */
 import { Middleware } from 'redux';
 
