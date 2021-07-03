@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent } from 'react';
+import { useState, FunctionComponent } from 'react';
 import { useSelector } from 'react-redux';
 
 import { getPricingState } from '~/store/modules/pricing/selectors';
@@ -35,7 +35,7 @@ const Home: FunctionComponent = () => {
       </button>
       {isPricingOpened ? (
         <div className="card-deck my-4 text-center">
-          {pricingCards && pricingCards.map(card => <PricingCard key={card.heading} {...card} />)}
+          {pricingCards && pricingCards.map((card) => <PricingCard key={card.heading} {...card} />)}
         </div>
       ) : null}
     </div>
