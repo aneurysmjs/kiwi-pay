@@ -22,14 +22,9 @@ export function withMatcher<AC extends (...args: any[]) => AnyAction>(
   actionCreator: AC,
   type: ReturnType<AC>['type'],
 ): Matchable<AC>;
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function withMatcher(actionCreator: Function & { type?: string }, _type?: string) {
-  // eslint-
-  // const type = _type ?? actionCreator.type ?? actionCreator().type;
-  let _a;
-  const type =
-    (_a = _type !== null && _type !== void 0 ? _type : actionCreator.type) !== null && _a !== void 0
-      ? _a
-      : actionCreator().type;
+  const type = _type ?? actionCreator.type ?? actionCreator().type;
 
   return {
     ...actionCreator,
