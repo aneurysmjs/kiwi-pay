@@ -46,15 +46,15 @@ export const Builder: FunctionComponent = () => {
   };
 
   return (
-    <>
-      <div className="container">
-        <div className="p-3">{rows.map((row, i) => renderRow(row, i))}</div>
-        <hr />
+    <div className="container">
+      <div className="p-3">{rows.map((row, i) => renderRow(row, i))}</div>
+      <hr />
 
+      <div className="text-center">
         <button type="button" className="btn btn-primary" onClick={handleAddRow}>
           add row
         </button>
       </div>
-    </>
+    </div>
   );
 };
