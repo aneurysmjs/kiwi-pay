@@ -8,13 +8,10 @@
     "module": "esnext",
     "target": "es5",
     "types": ["node"],
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "downlevelIteration": true,
     "sourceMap": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "rootDir": "src",
     "esModuleInterop": true,
@@ -28,9 +25,5 @@
     "declaration": true,
     "strict": true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "jest"
-  ]
+  "exclude": ["node_modules", "build", "jest"]
 }
