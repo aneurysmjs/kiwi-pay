@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { pricingReducer } from '../modules/pricing/reducers';
 import { usersReducer } from '../modules/users/reducers';
 import { configReducer } from '../modules/config/reducers';
+import { builderReducer } from '../modules/builder/reducers';
 
 const rootReducer = combineReducers({
   pricing: pricingReducer,
   users: usersReducer,
   config: configReducer,
+  builder: builderReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
