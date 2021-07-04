@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, useCallback } from 'react';
+import { FunctionComponent, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { addRowElement, sortRowElements } from '~/store/modules/builder/actions';
@@ -6,21 +6,17 @@ import { getRowElementByIdSelector } from '~/store/modules/builder/selectors';
 
 import { RowElement } from './RowElement';
 
-import { withDrag, WithDragProps, OnMove } from '~/shared/hooks/withDrag/withDrag';
+import { OnMove } from '~/shared/hooks/useDragging/useDragging';
+import { withControls, WithControlsProps } from '~/shared/hoc/withControls/withControls';
 
-interface PropsType extends WithDragProps {
+interface PropsType extends WithControlsProps {
   id: string;
-  children?: ReactNode;
+  index: number;
 }
 
-const RowComponent: FunctionComponent<PropsType> = ({ id }) => {
+const RowComponent: FunctionComponent<PropsType> = ({ id, children }) => {
   const dispatch = useDispatch();
-
   const rowElements = useSelector(getRowElementByIdSelector(id));
-
-  const handleAddRow = useCallback(() => {
-    dispatch(addRowElement(id));
-  }, [dispatch, id]);
 
   const handleMove = useCallback(
     ({ dragIndex, hoverIndex }: OnMove) => {
@@ -32,18 +28,23 @@ const RowComponent: FunctionComponent<PropsType> = ({ id }) => {
     [dispatch, id, rowElements],
   );
 
+  const handleAddRow = useCallback(() => {
+    dispatch(addRowElement(id));
+  }, [dispatch, id]);
+
   return (
-    <div className="row-block card mb-2">
+    <div className="card mb-4 position-relative">
+      {children}
       <div className="card-body d-flex justify-content-start">
         {rowElements.length > 0 &&
-          rowElements.map((rowElem, index) => (
+          rowElements.map((rowElem, idx) => (
             <RowElement
               key={rowElem.id}
               id={rowElem.id}
               dragOptions={{
                 direction: 'horizontal',
                 onMove: handleMove,
-                index,
+                index: idx,
                 id: rowElem.id,
                 dragType: 'ROW_ELEMENT',
               }}
@@ -60,4 +61,4 @@ const RowComponent: FunctionComponent<PropsType> = ({ id }) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const Row = withDrag(RowComponent);
+export const Row = withControls(RowComponent);
