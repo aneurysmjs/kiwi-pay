@@ -1,4 +1,4 @@
-import { JSXElementConstructor, useRef, ReactElement } from 'react';
+import { JSXElementConstructor, useRef, ReactElement, ReactNode } from 'react';
 
 import { useDrag, useDrop, DropTargetMonitor, DragSourceMonitor } from 'react-dnd';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -27,6 +27,7 @@ interface DragOptions {
 }
 
 export interface WithDragProps {
+  children?: ReactNode;
   dragOptions: DragOptions;
 }
 

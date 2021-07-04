@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react';
 
-import { withDrag, WithDragProps } from '~/shared/hooks/withDrag/withDrag';
+import { withDrag, WithDragProps } from '~/shared/hoc/withDrag/withDrag';
 
 interface PropsType extends WithDragProps {
   id: string;
