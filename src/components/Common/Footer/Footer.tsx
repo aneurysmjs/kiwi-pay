@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 
-const Footer = (): JSX.Element => (
-  <footer className="pt-4 border-top text-center">
+const Footer: FunctionComponent = () => (
+  <footer className="container-fluid pt-4 border-top text-center">
     <div className="row">
       <div className="col-12 col-md">
         Kiwi Pay

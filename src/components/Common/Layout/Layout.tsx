@@ -8,7 +8,7 @@ interface PropsType {
 }
 
 const Layout = (props: PropsType): JSX.Element => (
-  <main className="d-flex flex-column">
+  <main className="d-flex flex-column vh-100">
     <Header />
     <div className="flex-grow-1">{props.children}</div>
     <Footer />
