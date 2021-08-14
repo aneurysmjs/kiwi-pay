@@ -12,6 +12,7 @@ interface HotkeyHandler {
 }
 
 const hotkeysMap = new Map<string, HotkeyHandler>();
+const keysToPressMap = new Map<string, string[]>();
 
 let pressedKeys: string[] = [];
 
@@ -46,11 +47,16 @@ const handleKeyDown = (evt: KeyboardEvent) => {
   });
 
   hotkeysMap.forEach((callback, hotkey) => {
-    const keyShortcut = hotkey.split('+');
-    const keysToPress = [];
+    let keysToPress: string[] = [];
 
-    for (let i = 0; i < keyShortcut.length; i += 1) {
-      keysToPress.push(getKeycode(keyShortcut[i]));
+    if (!keysToPressMap.has(hotkey)) {
+      const keyShortcut = hotkey.split('+');
+      for (let i = 0; i < keyShortcut.length; i += 1) {
+        keysToPress.push(getKeycode(keyShortcut[i]));
+      }
+      keysToPressMap.set(hotkey, keysToPress);
+    } else {
+      keysToPress = keysToPressMap.get(hotkey) as string[];
     }
 
     if (compareHotkeys(keysToPress, pressedKeys)) {
@@ -95,6 +101,7 @@ export const useKeyShortcuts = (): typeof addHotkey => {
       document.removeEventListener('keyup', handleKeyUp);
 
       hotkeysMap.clear();
+      keysToPressMap.clear();
     };
   }, []);
 

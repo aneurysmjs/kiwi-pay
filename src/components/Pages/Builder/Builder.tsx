@@ -58,9 +58,12 @@ export const Builder: FunctionComponent = () => {
     [rows, dispatch],
   );
 
-  const handleDelete = () => {
-    dispatch(deleteRow(id));
-  };
+  const handleDelete = useCallback(
+    (id) => () => {
+      dispatch(deleteRow(id));
+    },
+    [dispatch],
+  );
 
   const renderRow = (row: RowType, index: number) => {
     return (
@@ -69,7 +72,7 @@ export const Builder: FunctionComponent = () => {
         key={row.id}
         id={row.id}
         index={index}
-        onDelete={handleDelete}
+        onDelete={handleDelete(row.id)}
         dragOptions={{
           direction: 'vertical',
           onMove: handleMove,
