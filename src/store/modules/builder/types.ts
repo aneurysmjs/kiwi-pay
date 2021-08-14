@@ -21,6 +21,7 @@ export interface BuilderState {
 }
 
 export const ADD_ROW = 'ADD_ROW';
+export const DELETE_ROW = 'DELETE_ROW';
 export const SORT_ROWS = 'SORT_ROWS';
 
 export const ADD_ROW_ELEMENT = 'ADD_ROW_ELEMENT';
@@ -32,6 +33,8 @@ export interface Sortable {
   dragId: string;
   hoverId: string;
 }
+
+export type DeleteRowPayload = string;
 
 export type SortRowsPayload = Sortable;
 export interface SortRowElementsPayload extends Sortable {

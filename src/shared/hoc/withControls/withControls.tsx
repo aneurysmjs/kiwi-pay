@@ -16,11 +16,12 @@ type ControlsPosition = 'left' | 'top';
 interface ControlsProps {
   position?: ControlsPosition;
   dragRef: ConnectDragSource;
+  onDelete: () => void;
 }
 
 const isVertical = (position: ControlsPosition): boolean => position === 'left';
 
-const Controls = ({ dragRef, position = 'left' }: ControlsProps) => {
+const Controls = ({ dragRef, position = 'left', onDelete }: ControlsProps) => {
   const postFix = isVertical(position) ? '-vertical' : '';
   return (
     <div
@@ -40,7 +41,8 @@ const Controls = ({ dragRef, position = 'left' }: ControlsProps) => {
       <span role="button" className="p-1 text-primary">
         <FontAwesomeIcon icon={faCopy} />
       </span>
-      <span role="button" className="p-1 text-primary">
+      {/* // eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+      <span role="button" className="p-1 text-primary" onClick={onDelete}>
         <FontAwesomeIcon icon={faTrash} />
       </span>
     </div>
@@ -50,6 +52,7 @@ export interface WithControlsProps {
   children?: ReactNode;
   position?: ControlsPosition;
   dragOptions: Omit<UseDraggingOptions, 'containerRef'>;
+  onDelete: () => void;
 }
 interface WithControls {
   <TProps extends WithControlsProps>(Component: JSXElementConstructor<TProps>): (
@@ -69,7 +72,7 @@ export const withControls: WithControls = (Component) => (props) => {
       style={{ opacity: isDragging ? 0 : 1 }}
       data-handler-id={handlerId}
     >
-      <Controls position={props.position} dragRef={dragRef} />
+      <Controls position={props.position} dragRef={dragRef} onDelete={props.onDelete} />
 
       <Component {...props} />
     </div>

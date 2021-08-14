@@ -3,7 +3,9 @@ import { withMatcher } from '~/store/helpers/withMatcher';
 import {
   SortRowsPayload,
   SortRowElementsPayload,
+  DeleteRowPayload,
   ADD_ROW,
+  DELETE_ROW,
   ADD_ROW_ELEMENT,
   SORT_ROWS,
   SORT_ROW_ELEMENTS,
@@ -11,6 +13,11 @@ import {
 
 export const addRow = withMatcher(() => ({
   type: ADD_ROW,
+}));
+
+export const deleteRow = withMatcher((payload: DeleteRowPayload) => ({
+  type: DELETE_ROW,
+  payload,
 }));
 
 export const sortRows = withMatcher((payload: SortRowsPayload) => ({

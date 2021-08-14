@@ -1,13 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import { useEffect } from 'react';
 
-const modifierKeys = ['ctrlKey', 'altKey', 'shiftKey', 'metaKey'];
+import { Keycodes } from './types';
 
-const modifiersMap = {
-  ctrl: 'Control',
-  alt: 'Alt',
-  shift: 'Shift',
-};
+import { compareHotkeys } from './utils';
+
+import { modifierKeys, modifiersCodeMap, keycodesMap } from './constans';
 
 interface HotkeyHandler {
   (evt?: KeyboardEvent): void;
@@ -17,32 +15,32 @@ const hotkeysMap = new Map<string, HotkeyHandler>();
 
 let pressedKeys: string[] = [];
 
-const getKey = (key: string) => {
-  return modifiersMap[key] || key;
+export const getKeycode = (key: string): Keycodes | string => {
+  return modifiersCodeMap[key] || keycodesMap[key] || key.toLowerCase();
 };
 
 const handleKeyDown = (evt: KeyboardEvent) => {
   console.log('evt', evt);
 
-  const { key } = evt;
+  const { code } = evt;
 
-  if (pressedKeys.indexOf(key) === -1) {
-    pressedKeys.push(key);
+  if (pressedKeys.includes(code)) {
+    pressedKeys.push(code);
   }
 
   modifierKeys.forEach((keyName) => {
     const isModifierPressed = evt[keyName];
-    // const key = modifierMap[keyName];
-    if (isModifierPressed && pressedKeys.indexOf(key) === -1) {
-      pressedKeys.push(key);
-    } else if (!isModifierPressed && pressedKeys.indexOf(key) > -1) {
+
+    if (isModifierPressed && !pressedKeys.includes(code)) {
+      pressedKeys.push(code);
+    } else if (!isModifierPressed && pressedKeys.indexOf(code) > -1) {
       // pressedKeys.splice(pressedKeys.indexOf(key), 1);
     } else if (keyName === 'metaKey' && isModifierPressed && pressedKeys.length === 3) {
       /**
        * Fix if Command is pressed
        */
       if (!(evt.ctrlKey || evt.shiftKey || evt.altKey)) {
-        pressedKeys = pressedKeys.slice(pressedKeys.indexOf(key));
+        pressedKeys = pressedKeys.slice(pressedKeys.indexOf(code));
       }
     }
   });
@@ -52,24 +50,28 @@ const handleKeyDown = (evt: KeyboardEvent) => {
     const keysToPress = [];
 
     for (let i = 0; i < keyShortcut.length; i += 1) {
-      keysToPress.push(getKey(keyShortcut[i]));
+      keysToPress.push(getKeycode(keyShortcut[i]));
     }
 
-    if (keysToPress.sort().join('') === pressedKeys.sort().join('')) {
+    if (compareHotkeys(keysToPress, pressedKeys)) {
       callback(evt);
     }
+
+    // console.log('keysToPress', keysToPress);
   });
+
+  // console.log('pressedKeys', pressedKeys);
 };
 
 const handleKeyUp = (evt: KeyboardEvent) => {
-  const { key } = evt;
+  const { code } = evt;
 
-  const i = pressedKeys.indexOf(key);
+  const i = pressedKeys.indexOf(code);
 
   if (i >= 0) {
     pressedKeys.splice(i, 1);
   }
-  // 特殊处理 cmmand 键，在 cmmand 组合快捷键 keyup 只执行一次的问题
+
   if (evt.key && evt.key.toLowerCase() === 'meta') {
     pressedKeys.splice(0, pressedKeys.length);
   }

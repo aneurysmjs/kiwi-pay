@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import { v4 as uuidV4 } from 'uuid';
 import produce from 'immer';
 
-import { addRow, addRowElement, sortRows, sortRowElements } from './actions';
+import { addRow, addRowElement, sortRows, sortRowElements, deleteRow } from './actions';
 import { BuilderState } from './types';
 
 // function updateItem<T, I extends Number, U>(arr: T[], index: number, item) {
@@ -46,6 +46,12 @@ let rowElementOrder = -1;
 //   targetObj[targetKey] = temp;
 // }
 
+// function swapProps<T, >(sourceObj: T, sourceKey, targetObj, targetKey) {
+//   var temp = sourceObj[sourceKey];
+//   sourceObj[sourceKey] = targetObj[targetKey];
+//   targetObj[targetKey] = temp;
+// }
+
 // eslint-disable-next-line import/prefer-default-export
 export const builderReducer = produce((state, action: AnyAction) => {
   if (addRow.match(action)) {
@@ -67,6 +73,13 @@ export const builderReducer = produce((state, action: AnyAction) => {
       order: (rowOrder += 1),
       text: makeId(),
     };
+
+    return state;
+  }
+  if (deleteRow.match(action)) {
+    const { payload } = action;
+
+    delete state.rows[payload];
 
     return state;
   }

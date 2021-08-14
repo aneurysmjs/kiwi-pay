@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import hotkeys from 'hotkeys-js';
 import { RowType } from '~/store/modules/builder/types';
-import { addRow, sortRows } from '~/store/modules/builder/actions';
+import { addRow, sortRows, deleteRow } from '~/store/modules/builder/actions';
 import { getRowsSelector, getRowElementByIdSelector } from '~/store/modules/builder/selectors';
 import { OnMove } from '~/shared/hooks/useDragging/useDragging';
 import useKeyShortcuts from '~/shared/hooks/useKeyShortcuts';
@@ -17,27 +17,32 @@ export const Builder: FunctionComponent = () => {
   const rows = useSelector(getRowsSelector);
   const addHotkey = useKeyShortcuts();
 
-  addHotkey('ctrl+a', (event) => {
+  addHotkey('ctrl+shift+e', () => {
     // Prevent the default refresh event under WINDOWS system
     // event.preventDefault();
     // eslint-disable-next-line no-alert
-    // console.log('you pressed ctrl+a BITCH!');
+    // console.log('you pressed ctrl+shift+e BITCH!');
     dispatch(addRow());
   });
 
-  addHotkey('ctrl+d', (event) => {
+  addHotkey('ctrl+shift+backspace', (event) => {
+    console.log('you pressed ctrl+shift+backpace BITCH!');
+  });
+
+  addHotkey('ctrl+alt', (event) => {
     // Prevent the default refresh event under WINDOWS system
     // event.preventDefault();
     // eslint-disable-next-line no-alert
-    console.log('you pressed ctrl+d BITCH!');
+    console.log('you pressed ctrl+alt BITCH!');
   });
   // const rowElements = useSelector(getRowElementByIdSelector(id));
 
-  // hotkeys('ctrl+a', (event, handler) => {
-  //   // Prevent the default refresh event under WINDOWS system
-  //   event.preventDefault();
-  //   alert('you pressed F5!');
-  // });
+  hotkeys('ctrl+shift+a', (event, handler) => {
+    console.log('hotkeys event', event);
+    // Prevent the default refresh event under WINDOWS system
+    event.preventDefault();
+    console.log('you pressed ctrl+shift+a MUDAFOCKA');
+  });
 
   const handleAddRow = useCallback(() => {
     dispatch(addRow());
@@ -53,6 +58,10 @@ export const Builder: FunctionComponent = () => {
     [rows, dispatch],
   );
 
+  const handleDelete = () => {
+    dispatch(deleteRow(id));
+  };
+
   const renderRow = (row: RowType, index: number) => {
     return (
       <Row
@@ -60,6 +69,7 @@ export const Builder: FunctionComponent = () => {
         key={row.id}
         id={row.id}
         index={index}
+        onDelete={handleDelete}
         dragOptions={{
           direction: 'vertical',
           onMove: handleMove,
