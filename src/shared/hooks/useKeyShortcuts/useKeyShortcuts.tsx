@@ -2,40 +2,54 @@
 import { useEffect } from 'react';
 
 import { Keycodes } from './types';
-
-import { compareHotkeys } from './utils';
-
+import { compareHotkeys, getKeys } from './utils';
 import { modifierKeys, modifiersCodeMap, keycodesMap } from './constans';
 
 interface HotkeyHandler {
-  (evt?: KeyboardEvent): void;
+  (evt?: KeyboardEvent, hotkeyInfo?: HotkeyInfo): void;
 }
 
-const hotkeysMap = new Map<string, HotkeyHandler>();
-const keysToPressMap = new Map<string, string[]>();
+interface HotkeyInfo {
+  callback: HotkeyHandler;
+  keyShortcuts: string[];
+  hotkey: string;
+}
+
+const hotkeysMap = new Map<string, HotkeyInfo>();
 
 let pressedKeys: string[] = [];
 
-export const getKeycode = (key: string): Keycodes | string => {
+/**
+ * @description
+ * gets the corresponding keycode.
+ *
+ * @function
+ * @param key Keyshorcut
+ * @returns Keycodes
+ *
+ * @example
+ *
+ * getKeycode('ctrl'); // 'ControLeft;
+ * getKeycode('a'); // 'KeyA'
+ */
+const getKeycode = (key: string): Keycodes => {
   return modifiersCodeMap[key] || keycodesMap[key] || key.toLowerCase();
 };
 
 const handleKeyDown = (evt: KeyboardEvent) => {
-  console.log('evt', evt);
-
   const { code } = evt;
 
-  if (pressedKeys.includes(code)) {
+  if (!pressedKeys.includes(code)) {
     pressedKeys.push(code);
   }
 
   modifierKeys.forEach((keyName) => {
     const isModifierPressed = evt[keyName];
 
+    // if one of the modifier keys is pressed and doesn't exist on `pressedKeys`
+    // then is able to added.
     if (isModifierPressed && !pressedKeys.includes(code)) {
       pressedKeys.push(code);
-    } else if (!isModifierPressed && pressedKeys.indexOf(code) > -1) {
-      // pressedKeys.splice(pressedKeys.indexOf(key), 1);
     } else if (keyName === 'metaKey' && isModifierPressed && pressedKeys.length === 3) {
       /**
        * Fix if Command is pressed
@@ -46,29 +60,25 @@ const handleKeyDown = (evt: KeyboardEvent) => {
     }
   });
 
-  hotkeysMap.forEach((callback, hotkey) => {
-    let keysToPress: string[] = [];
-
-    if (!keysToPressMap.has(hotkey)) {
-      const keyShortcut = hotkey.split('+');
-      for (let i = 0; i < keyShortcut.length; i += 1) {
-        keysToPress.push(getKeycode(keyShortcut[i]));
-      }
-      keysToPressMap.set(hotkey, keysToPress);
-    } else {
-      keysToPress = keysToPressMap.get(hotkey) as string[];
-    }
+  hotkeysMap.forEach((info) => {
+    const keysToPress = info.keyShortcuts;
 
     if (compareHotkeys(keysToPress, pressedKeys)) {
-      callback(evt);
+      info.callback(evt, info);
     }
-
-    // console.log('keysToPress', keysToPress);
   });
 
   // console.log('pressedKeys', pressedKeys);
 };
 
+/**
+ * @description
+ * restores all pressed keys on keyup event
+ *
+ * @function
+ * @param {KeyboardEvent} evt keyboard event
+ * @returns void
+ */
 const handleKeyUp = (evt: KeyboardEvent) => {
   const { code } = evt;
 
@@ -83,11 +93,26 @@ const handleKeyUp = (evt: KeyboardEvent) => {
   }
 };
 
-const addHotkey = (hotkeys: string, callback: HotkeyHandler) => {
-  pressedKeys = [];
+/**
+ * @description
+ * adds hotkeys with their respective callback.
+ *
+ * @param {string} keys keys combinations to trigger.
+ * @param {HotkeyHandler} callback function to be called when the hotkeys are valid.
+ * @returns void
+ */
+const addHotkey = (keys: string, callback: HotkeyHandler): void => {
+  const hotkeys = getKeys(keys);
 
-  if (!hotkeysMap.has(hotkeys)) {
-    hotkeysMap.set(hotkeys, callback);
+  for (let i = 0; i < hotkeys.length; i += 1) {
+    const hotkey = hotkeys[i];
+
+    if (!hotkeysMap.has(hotkey)) {
+      pressedKeys = [];
+      const keyShortcuts = hotkey.split('+').map(getKeycode);
+
+      hotkeysMap.set(hotkey, { callback, keyShortcuts, hotkey });
+    }
   }
 };
 
@@ -101,7 +126,6 @@ export const useKeyShortcuts = (): typeof addHotkey => {
       document.removeEventListener('keyup', handleKeyUp);
 
       hotkeysMap.clear();
-      keysToPressMap.clear();
     };
   }, []);
 

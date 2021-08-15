@@ -54,6 +54,14 @@ const makeKeycodeFromRange = <Chars extends string, Prefix extends string>(
  *
  * @function
  * @returns CharCodeMap<Alphabet, 'Key'>
+ *
+ * @example
+ *
+ * {
+ *  a: 'KeyA'
+ *  ...
+ *  z: 'KeyZ'
+ * }
  */
 export const makeLettersKeycode = (): CharCodeMap<Alphabet, 'Key'> =>
   makeKeycodeFromRange(97, 123, 'Key');
@@ -64,6 +72,14 @@ export const makeLettersKeycode = (): CharCodeMap<Alphabet, 'Key'> =>
  *
  * @function
  * @returns CharCodeMap<Digits, 'Digit'>
+ *
+ *  @example
+ *
+ * {
+ *  0: 'Digit0'
+ *  ...
+ *  9: 'Digit9'
+ * }
  */
 export const makeDigitsKeycode = (): CharCodeMap<Digits, 'Digit'> =>
   makeKeycodeFromRange(48, 58, 'Digit');
@@ -94,4 +110,48 @@ export const isLetterInRange = (char: string): boolean => {
   const code = char.toLowerCase().charCodeAt(0);
 
   return code > 96 && code < 123;
+};
+
+/**
+ * @description
+ * Function that makes and array of hotkeys by splitting the given string
+ *
+ * @function
+ * @param {string} keyShortcuts all the hotkeys to process.
+ * @returns string[]
+ *
+ * @example
+ *
+ * const keyShortcuts = 'ctrl+shift+a, ctrl+shift+b'
+ *
+ * getKeys(keyShortcuts); // ['ctrl+shift+a', 'ctrl+shift+b']
+ *
+ */
+export const getKeys = (keyShortcuts: string): string[] => {
+  let hotkeys = keyShortcuts;
+
+  if (typeof hotkeys !== 'string') {
+    hotkeys = '';
+  }
+
+  // remove empty spaces
+  // 'ctrl+shift+a, ctrl+shift+b' => 'ctrl+shift+a,ctrl+shift+b'
+  hotkeys = hotkeys.replace(/\s/g, '');
+
+  // split by ','
+  // 'ctrl+shift+a,ctrl+shift+b' => ['ctrl+shift+a', 'ctrl+shift+b']
+  const keys = hotkeys.split(',');
+
+  // check if there's trailing empty spaces.
+  let lastIndex = keys.lastIndexOf('');
+
+  // remove all traling empty spaces and replace them with only one ','
+  // ['ctrl+shift+a', 'ctrl+shift+b', '', '', ''] => ['ctrl+shift+a', 'ctrl+shift+b', ',']
+  for (; lastIndex >= 0; ) {
+    keys[lastIndex - 1] += ',';
+    keys.splice(lastIndex, 1);
+    lastIndex = keys.lastIndexOf('');
+  }
+
+  return keys;
 };

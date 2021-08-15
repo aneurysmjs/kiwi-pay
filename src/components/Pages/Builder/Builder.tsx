@@ -17,7 +17,9 @@ export const Builder: FunctionComponent = () => {
   const rows = useSelector(getRowsSelector);
   const addHotkey = useKeyShortcuts();
 
-  addHotkey('ctrl+shift+e', () => {
+  addHotkey('ctrl+shift+e, ctrl+shift+k', (event, info) => {
+    console.log('event', event);
+    console.log('info', info);
     // Prevent the default refresh event under WINDOWS system
     // event.preventDefault();
     // eslint-disable-next-line no-alert
@@ -29,19 +31,22 @@ export const Builder: FunctionComponent = () => {
     console.log('you pressed ctrl+shift+backpace BITCH!');
   });
 
-  addHotkey('ctrl+alt', (event) => {
-    // Prevent the default refresh event under WINDOWS system
-    // event.preventDefault();
-    // eslint-disable-next-line no-alert
-    console.log('you pressed ctrl+alt BITCH!');
-  });
   // const rowElements = useSelector(getRowElementByIdSelector(id));
 
-  hotkeys('ctrl+shift+a', (event, handler) => {
-    console.log('hotkeys event', event);
+  hotkeys('ctrl+shift+a, ctrl+shift+k, ctrl+r', (event, handler) => {
+    if (handler.key === 'ctrl+r') {
+      event.preventDefault();
+      console.log('you pressed ctrl+r MUDAFOCKA');
+    }
+    if (handler.key === 'ctrl+shift+a') {
+      console.log('you pressed ctrl+shift+a MUDAFOCKA');
+    }
+
+    if (handler.key === 'ctrl+shift+k') {
+      console.log('you pressed ctrl+shift+k MUDAFOCKA');
+    }
     // Prevent the default refresh event under WINDOWS system
-    event.preventDefault();
-    console.log('you pressed ctrl+shift+a MUDAFOCKA');
+    // event.preventDefault();
   });
 
   const handleAddRow = useCallback(() => {

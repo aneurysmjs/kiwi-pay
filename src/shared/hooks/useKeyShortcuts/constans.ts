@@ -8,9 +8,13 @@ export const lettersKeycodeMap = makeLettersKeycode();
 export const digitsKeycodeMap = makeDigitsKeycode();
 
 export const modifiersCodeMap = {
-  ctrl: 'ControlLeft',
-  alt: 'AltLeft',
+  // shift
   shift: 'ShiftLeft',
+  // alt
+  alt: 'AltLeft',
+  // control
+  ctrl: 'ControlLeft',
+  // meta
   meta: 'OSLeft',
 } as const;
 
