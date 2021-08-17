@@ -17,23 +17,24 @@ export const Builder: FunctionComponent = () => {
   const rows = useSelector(getRowsSelector);
   const addHotkey = useKeyShortcuts();
 
-  addHotkey('ctrl+shift+e, ctrl+shift+k', (event, info) => {
-    console.log('event', event);
-    console.log('info', info);
-    // Prevent the default refresh event under WINDOWS system
-    // event.preventDefault();
-    // eslint-disable-next-line no-alert
-    // console.log('you pressed ctrl+shift+e BITCH!');
-    dispatch(addRow());
-  });
+  // addHotkey('ctrl+shift+e, ctrl+shift+k', (event, info) => {
+  //   console.log('event', event);
+  //   console.log('info', info);
+  //   // Prevent the default refresh event under WINDOWS system
+  //   // event.preventDefault();
+  //   // eslint-disable-next-line no-alert
+  //   // console.log('you pressed ctrl+shift+e BITCH!');
+  //   dispatch(addRow());
+  // });
 
-  addHotkey('ctrl+shift+backspace', (event) => {
-    console.log('you pressed ctrl+shift+backpace BITCH!');
-  });
+  // addHotkey('ctrl+shift+backspace', (event) => {
+  //   console.log('you pressed ctrl+shift+backpace BITCH!');
+  // });
 
   // const rowElements = useSelector(getRowElementByIdSelector(id));
 
-  hotkeys('ctrl+shift+a, ctrl+shift+k, ctrl+r', (event, handler) => {
+  addHotkey('ctrl+shift+a, ctrl+shift+k, ctrl+r', (event, handler) => {
+    console.log('handler', handler);
     if (handler.key === 'ctrl+r') {
       event.preventDefault();
       console.log('you pressed ctrl+r MUDAFOCKA');

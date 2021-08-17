@@ -10,12 +10,16 @@ export const digitsKeycodeMap = makeDigitsKeycode();
 export const modifiersCodeMap = {
   // shift
   shift: 'ShiftLeft',
+  shiftKey: 'ShiftLeft',
   // alt
   alt: 'AltLeft',
+  altKey: 'AltLeft',
   // control
   ctrl: 'ControlLeft',
+  ctrlKey: 'ControlLeft',
   // meta
   meta: 'OSLeft',
+  metaKey: 'OSLeft',
 } as const;
 
 export const specialKeysKeycodeMap = {

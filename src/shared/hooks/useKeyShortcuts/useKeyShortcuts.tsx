@@ -13,6 +13,7 @@ interface HotkeyInfo {
   callback: HotkeyHandler;
   keyShortcuts: string[];
   hotkey: string;
+  keydown: boolean;
 }
 
 const hotkeysMap = new Map<string, HotkeyInfo>();
@@ -36,7 +37,7 @@ const getKeycode = (key: string): Keycodes => {
   return modifiersCodeMap[key] || keycodesMap[key] || key.toLowerCase();
 };
 
-const handleKeyDown = (evt: KeyboardEvent) => {
+const keyHandler = (evt: KeyboardEvent) => {
   const { code } = evt;
 
   if (!pressedKeys.includes(code)) {
@@ -45,6 +46,7 @@ const handleKeyDown = (evt: KeyboardEvent) => {
 
   modifierKeys.forEach((keyName) => {
     const isModifierPressed = evt[keyName];
+    // const modifierCode =
 
     // if one of the modifier keys is pressed and doesn't exist on `pressedKeys`
     // then is able to added.
@@ -63,12 +65,14 @@ const handleKeyDown = (evt: KeyboardEvent) => {
   hotkeysMap.forEach((info) => {
     const keysToPress = info.keyShortcuts;
 
+    // console.log('keysToPress', keysToPress);
+
     if (compareHotkeys(keysToPress, pressedKeys)) {
       info.callback(evt, info);
     }
   });
 
-  // console.log('pressedKeys', pressedKeys);
+  console.log('pressedKeys', pressedKeys);
 };
 
 /**
@@ -79,7 +83,7 @@ const handleKeyDown = (evt: KeyboardEvent) => {
  * @param {KeyboardEvent} evt keyboard event
  * @returns void
  */
-const handleKeyUp = (evt: KeyboardEvent) => {
+const cleanKeys = (evt: KeyboardEvent) => {
   const { code } = evt;
 
   const i = pressedKeys.indexOf(code);
@@ -102,18 +106,25 @@ const handleKeyUp = (evt: KeyboardEvent) => {
  * @returns void
  */
 const addHotkey = (keys: string, callback: HotkeyHandler): void => {
+  pressedKeys = [];
   const hotkeys = getKeys(keys);
 
   for (let i = 0; i < hotkeys.length; i += 1) {
     const hotkey = hotkeys[i];
 
     if (!hotkeysMap.has(hotkey)) {
-      pressedKeys = [];
       const keyShortcuts = hotkey.split('+').map(getKeycode);
 
-      hotkeysMap.set(hotkey, { callback, keyShortcuts, hotkey });
+      hotkeysMap.set(hotkey, { callback, keyShortcuts, hotkey, keydown: true });
     }
   }
+};
+
+const handleKeyDown = keyHandler;
+
+const handleKeyUp = (evt: KeyboardEvent) => {
+  // keyHandler(evt);
+  cleanKeys(evt);
 };
 
 export const useKeyShortcuts = (): typeof addHotkey => {

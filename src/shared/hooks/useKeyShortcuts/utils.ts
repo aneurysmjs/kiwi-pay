@@ -122,9 +122,7 @@ export const isLetterInRange = (char: string): boolean => {
  *
  * @example
  *
- * const keyShortcuts = 'ctrl+shift+a, ctrl+shift+b'
- *
- * getKeys(keyShortcuts); // ['ctrl+shift+a', 'ctrl+shift+b']
+ * 'ctrl+shift+a, ctrl+shift+b' => ['ctrl+shift+a', 'ctrl+shift+b']
  *
  */
 export const getKeys = (keyShortcuts: string): string[] => {
