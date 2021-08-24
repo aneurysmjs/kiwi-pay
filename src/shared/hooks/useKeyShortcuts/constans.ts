@@ -7,6 +7,14 @@ export const modifierKeys: ModifierKeys[] = ['ctrlKey', 'altKey', 'shiftKey', 'm
 export const lettersKeycodeMap = makeLettersKeycode();
 export const digitsKeycodeMap = makeDigitsKeycode();
 
+export const modifierKeysMap = {
+  // from code to event property name
+  ShiftLeft: 'shiftKey',
+  AltLeft: 'altKey',
+  ControlLeft: 'ctrlKey',
+  MetaLeft: 'metaKey',
+};
+
 export const modifiersCodeMap = {
   // shift
   shift: 'ShiftLeft',
@@ -18,8 +26,8 @@ export const modifiersCodeMap = {
   ctrl: 'ControlLeft',
   ctrlKey: 'ControlLeft',
   // meta
-  meta: 'OSLeft',
-  metaKey: 'OSLeft',
+  meta: 'MetaLeft',
+  metaKey: 'MetaLeft',
 } as const;
 
 export const specialKeysKeycodeMap = {

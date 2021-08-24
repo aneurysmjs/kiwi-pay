@@ -1,9 +1,9 @@
 import { Alphabet, Digits } from '~/shared/types';
 
-import { Keycodes, CharCodeMap } from './types';
+import { CharCodeMap } from './types';
 
 /**
- *  @description
+ * @description
  * Compares two arrays that are out of order.
  *
  * @template T
@@ -19,6 +19,20 @@ const compareArrays = <T>(arrOne: T[], arrTwo: T[]) => {
       return arrTwo.includes(element);
     })
   );
+};
+
+/**
+ * @description
+ * deletes an item from an array without modifing it.
+ *
+ * @template T
+ * @function
+ * @param {T[]} arr array with elements
+ * @param {number} index array's index.
+ * @returns T[]
+ */
+export const deleteItem = <T>(arr: T[], index: number): T[] => {
+  return [...arr.slice(0, index), ...arr.slice(index + 1)];
 };
 
 /**
@@ -153,3 +167,30 @@ export const getKeys = (keyShortcuts: string): string[] => {
 
   return keys;
 };
+
+/**
+ * @description
+ * Gets only the modifiers from the keyshortcut.
+ *
+ * @param {string[]} keyshortcut the key combinations that forms the hotkey.
+ * @returns string[]
+ *
+ * @example
+ *
+ * ['ctrl+shift+a'] => ['ctrl+shift']
+ *
+ */
+export const getModifiers = (keyshortcut: string[]): string[] => {
+  const modifiers = keyshortcut.slice(0, keyshortcut.length - 1);
+  return modifiers;
+};
+
+/**
+ * @description
+ * checks whether the event is of type `keydown`
+ *
+ * @param {KeyboardEvent} event keybooard event.
+ *
+ * @returns boolean
+ */
+export const isKeydown = (event: KeyboardEvent): boolean => event.type === 'keydown';

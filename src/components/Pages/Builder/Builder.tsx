@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback } from 'react';
+import { FunctionComponent, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import hotkeys from 'hotkeys-js';
@@ -33,22 +33,23 @@ export const Builder: FunctionComponent = () => {
 
   // const rowElements = useSelector(getRowElementByIdSelector(id));
 
-  addHotkey('ctrl+shift+a, ctrl+shift+k, ctrl+r', (event, handler) => {
-    console.log('handler', handler);
-    if (handler.key === 'ctrl+r') {
-      event.preventDefault();
-      console.log('you pressed ctrl+r MUDAFOCKA');
-    }
-    if (handler.key === 'ctrl+shift+a') {
-      console.log('you pressed ctrl+shift+a MUDAFOCKA');
-    }
+  useEffect(() => {
+    addHotkey('ctrl+shift+a, ctrl+shift+backspace, ctrl+r', (event, handler) => {
+      // event?.preventDefault();
+      if (handler?.hotkey === 'ctrl+r') {
+        event?.preventDefault();
+        console.log('you pressed ctrl+r MUDAFOCKA');
+      }
+      if (handler?.hotkey === 'ctrl+shift+a') {
+        console?.log('you pressed ctrl+shift+a MUDAFOCKA');
+      }
 
-    if (handler.key === 'ctrl+shift+k') {
-      console.log('you pressed ctrl+shift+k MUDAFOCKA');
-    }
-    // Prevent the default refresh event under WINDOWS system
-    // event.preventDefault();
-  });
+      if (handler?.hotkey === 'ctrl+shift+backspace') {
+        console?.log('you pressed ctrl+shift+backspace MUDAFOCKA');
+        // dispatch(addRow());
+      }
+    });
+  }, [addHotkey, dispatch]);
 
   const handleAddRow = useCallback(() => {
     dispatch(addRow());
