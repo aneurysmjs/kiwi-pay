@@ -1,7 +1,6 @@
 import { FunctionComponent, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import hotkeys from 'hotkeys-js';
 import { RowType } from '~/store/modules/builder/types';
 import { addRow, sortRows, deleteRow } from '~/store/modules/builder/actions';
 import { getRowsSelector, getRowElementByIdSelector } from '~/store/modules/builder/selectors';

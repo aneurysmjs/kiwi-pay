@@ -44,6 +44,11 @@ const getKeycode = (key: string): Keycodes => {
   return modifiersCodeMap[key] || keycodesMap[key];
 };
 
+/**
+ *
+ * @param {KeyboardEvent} evt
+ * @param {HotkeyInfo} hotkeyInfo
+ */
 const eventHandler = (evt: KeyboardEvent, hotkeyInfo: HotkeyInfo): void => {
   let modifiersMatch;
 

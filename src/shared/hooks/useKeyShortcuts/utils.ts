@@ -172,6 +172,7 @@ export const getKeys = (keyShortcuts: string): string[] => {
  * @description
  * Gets only the modifiers from the keyshortcut.
  *
+ * @function
  * @param {string[]} keyshortcut the key combinations that forms the hotkey.
  * @returns string[]
  *
@@ -189,6 +190,7 @@ export const getModifiers = (keyshortcut: string[]): string[] => {
  * @description
  * checks whether the event is of type `keydown`
  *
+ * @function
  * @param {KeyboardEvent} event keybooard event.
  *
  * @returns boolean

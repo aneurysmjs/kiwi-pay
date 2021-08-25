@@ -6,12 +6,14 @@ import { pricingReducer } from '../modules/pricing/reducers';
 import { usersReducer } from '../modules/users/reducers';
 import { configReducer } from '../modules/config/reducers';
 import { builderReducer } from '../modules/builder/reducers';
+import { activeElementsReducer } from '../modules/activeElements/reducers';
 
 const rootReducer = combineReducers({
   pricing: pricingReducer,
   users: usersReducer,
   config: configReducer,
   builder: builderReducer,
+  activeElements: activeElementsReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

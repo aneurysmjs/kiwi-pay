@@ -1,6 +1,7 @@
 import { FunctionComponent, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { setActiveElement } from '~/store/modules/activeElements/actions';
 import { addRowElement, sortRowElements } from '~/store/modules/builder/actions';
 import { getRowElementByIdSelector } from '~/store/modules/builder/selectors';
 
@@ -32,8 +33,13 @@ const RowComponent: FunctionComponent<PropsType> = ({ id, children }) => {
     dispatch(addRowElement(id));
   }, [dispatch, id]);
 
+  const handleClick = () => {
+    dispatch(setActiveElement(id));
+  };
+
   return (
-    <div className="card mb-4 position-relative">
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div className="card mb-4 position-relative" onClick={handleClick}>
       {children}
       <div className="card-body d-flex justify-content-start">
         {rowElements.length > 0 &&
