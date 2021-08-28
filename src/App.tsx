@@ -1,8 +1,6 @@
-import React from 'react';
-
 import Routing from '~/components/routing';
 
-import './assets/scss/styles.scss';
+import 'bootswatch/dist/darkly/bootstrap.min.css';
 
 const App = (): JSX.Element => <Routing />;
 

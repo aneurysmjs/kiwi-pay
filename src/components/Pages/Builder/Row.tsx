@@ -10,9 +10,9 @@ import { RowElement } from './RowElement';
 import { OnMove } from '~/shared/hooks/useDragging/useDragging';
 import { withControls, WithControlsProps } from '~/shared/hoc/withControls/withControls';
 
-interface PropsType extends WithControlsProps {
+interface PropsType {
   id: string;
-  index: number;
+  // index: number;
 }
 
 const RowComponent: FunctionComponent<PropsType> = ({ id, children }) => {
@@ -40,7 +40,6 @@ const RowComponent: FunctionComponent<PropsType> = ({ id, children }) => {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div className="card mb-4 position-relative" onClick={handleClick}>
-      {children}
       <div className="card-body d-flex justify-content-start">
         {rowElements.length > 0 &&
           rowElements.map((rowElem, idx) => (
@@ -67,4 +66,4 @@ const RowComponent: FunctionComponent<PropsType> = ({ id, children }) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const Row = withControls(RowComponent);
+export const Row = RowComponent;
