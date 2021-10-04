@@ -34,6 +34,11 @@ function Navigation(): JSX.Element {
               Clients
             </a>
           </li>
+          <li className="nav-item">
+            <NavLink to="/range" className="nav-link">
+              Range
+            </NavLink>
+          </li>
         </ul>
       </div>
       <button className="btn btn-outline-primary">Sign up</button>

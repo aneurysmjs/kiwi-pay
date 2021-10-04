@@ -5,6 +5,8 @@ import Layout from '~/components/common/Layout';
 
 import Home from '~/components/pages/Home';
 
+import Range from '~/components/pages/Range';
+
 const Builder = loadable(() => import('~/components/pages/Builder'));
 
 const Routing = (): JSX.Element => (
@@ -12,6 +14,7 @@ const Routing = (): JSX.Element => (
     <Layout>
       <Route exact path="/" component={Home} />
       <Route path="/builder" component={Builder} />
+      <Route path="/range" component={Range} />
     </Layout>
   </Router>
 );
