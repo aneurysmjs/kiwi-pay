@@ -2,12 +2,13 @@ import { FunctionComponent } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
 import Layout from '~/components/common/Layout';
-import Home from '~/components/pages/Home';
+
+import HomeRouter from '~/routes/HomeRouter/HomeRouter';
 
 const AppRouter: FunctionComponent = () => (
   <Router>
     <Layout>
-      <Route exact path="/" component={Home} />
+      <HomeRouter />
     </Layout>
   </Router>
 );

@@ -1,8 +1,9 @@
 const helpers = require('./helpers');
 
 const componentGenerator = require('./generators/component/componentGenerator');
-const moduleGenerator = require('./generators/module/routeGenerator');
+const moduleGenerator = require('./generators/module/moduleGenerator');
 const routeGenerator = require('./generators/route/routeGenerator');
+const storeGenerator = require('./generators/store/storeGenerator');
 
 /**
  * @typedef {import('plop').NodePlopAPI} NodePlopAPI
@@ -21,4 +22,5 @@ module.exports = function plopFn(plop) {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('module', moduleGenerator);
   plop.setGenerator('route', routeGenerator);
+  plop.setGenerator('store', storeGenerator);
 };
