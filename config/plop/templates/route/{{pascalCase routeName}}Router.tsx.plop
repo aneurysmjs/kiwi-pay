@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import {{ curlyMe (suffixMe (camelCase routeName) 'Routes') }} from 'Modules/{{pascalCase routeName}}/Routes/{{camelCase routeName}}Routes';
+import {{pascalCase routeName}}Page from '~/modules/{{pascalCase routeName}}/pages/{{pascalCase routeName}}Page';
 
 export const {{pascalCase routeName}}Router: FunctionComponent = () => (
   <Switch>
-    <Route element={<{{pascalCase routeName}} />} path="/{{camelCase routeName}}" />
+    <Route component={ {{pascalCase routeName}}Page } path="/{{camelCase routeName}}" />
   </Switch>
 );

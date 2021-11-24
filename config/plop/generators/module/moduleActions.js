@@ -10,7 +10,7 @@ module.exports = function routeActions({ moduleName }) {
     {
       type: 'addMany',
       base: `${paths.pathPlopTemplates}/module`,
-      destination: `${paths.src}/module/{{properCase moduleName}}`,
+      destination: `${paths.src}/modules`,
       templateFiles: `${paths.pathPlopTemplates}/module/**`,
       stripExtensions: ['plop'],
       data: {

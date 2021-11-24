@@ -14,7 +14,7 @@ type UseApi = [UseApiMeta, Dispatch<SetStateAction<string>>];
 // eslint-disable-next-line import/prefer-default-export
 export const useApi = (): UseApi => {
   const [data, setData] = useState({ hits: [] });
-  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=redux');
+  const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/users');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 

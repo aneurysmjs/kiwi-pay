@@ -24,11 +24,6 @@ module.exports = function plopActions({ componentType, componentRole, componentN
         path: setPath('less'),
         templateFile: setTemplatePath('less'),
       },
-      {
-        type: 'add',
-        path: setPath('test.tsx'),
-        templateFile: setTemplatePath('test.tsx'),
-      },
     ];
   }
 
