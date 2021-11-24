@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Layout from '~/components/common/Layout';
 
-import HomeRouter from '~/routes/HomeRouter/HomeRouter';
+import HomeRouter from '~/routes/Home/HomeRouter';
 
 const AppRouter: FunctionComponent = () => (
   <Router>
