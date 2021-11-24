@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import Routing from '~/components/routing';
+import Routing from '~/routes';
 
 import './assets/scss/styles.scss';
 

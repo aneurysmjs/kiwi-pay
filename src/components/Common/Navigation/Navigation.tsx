@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 
-function Navigation(): JSX.Element {
+const Navigation: FunctionComponent = () => {
   return (
     <nav className="navbar navbar-expand-md">
       <NavLink to="/" className="navbar-brand">
@@ -20,35 +20,15 @@ function Navigation(): JSX.Element {
       <div className="navbar-collapse">
         <ul className="navbar nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              Features
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Support
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Clients
-            </a>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/range" className="nav-link">
-              Range
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink to="/inline" className="nav-link">
-              Inline
+            <NavLink to="/" className="nav-link">
+              Home
             </NavLink>
           </li>
         </ul>
       </div>
-      <button className="btn btn-outline-primary">Sign up</button>
+      {/* <button className="btn btn-outline-primary">Sign up</button> */}
     </nav>
   );
-}
+};
 
 export default Navigation;
