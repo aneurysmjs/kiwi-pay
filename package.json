@@ -10,7 +10,9 @@
     "start": "parcel src/index.html --open",
     "build": "parcel build src/index.html",
     "lint": "eslint './src/**/*.{ts,tsx}'",
-    "prettier": "prettier --write ./src/**/*.{ts,tsx}"
+    "prettier": "prettier --write ./src/**/*.{ts,tsx}",
+    "generate": "plop --plopfile config/plop/plop.config.js"
+
   },
   "config": {
     "commitizen": {

@@ -39,6 +39,11 @@ function Navigation(): JSX.Element {
               Range
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/inline" className="nav-link">
+              Inline
+            </NavLink>
+          </li>
         </ul>
       </div>
       <button className="btn btn-outline-primary">Sign up</button>

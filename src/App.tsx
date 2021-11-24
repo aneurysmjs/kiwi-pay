@@ -1,7 +1,8 @@
+import { FunctionComponent } from 'react';
 import Routing from '~/components/routing';
 
-import 'bootswatch/dist/darkly/bootstrap.min.css';
+import './assets/scss/styles.scss';
 
-const App = (): JSX.Element => <Routing />;
+const App: FunctionComponent = () => <Routing />;
 
 export default App;
