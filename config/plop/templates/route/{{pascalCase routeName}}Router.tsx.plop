@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import loadable from '@loadable/component';
 import { Switch, Route } from 'react-router-dom';
 
-const {{pascalCase routeName}}Page = loadable(() => import('~/modules/{{pascalCase routeName}}/pages/{{pascalCase routeName}}Page');
+const {{pascalCase routeName}}Page = loadable(() => import('~/modules/{{pascalCase routeName}}/pages/{{pascalCase routeName}}Page'));
 
 const {{pascalCase routeName}}Router: FunctionComponent = () => (
   <Switch>
