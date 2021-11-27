@@ -34,6 +34,7 @@
   "rules": {
     "indent": "off",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-restricted-exports": "off",
     /* @typescript-eslint */
     // Eslint's `indent` rule and Prettier's indentation styles do not match
     // they're completely separate implementations
