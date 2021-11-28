@@ -5,20 +5,22 @@ import { useContext, createContext, Provider } from 'react';
 
 type MakeGenericContext<T> = readonly [() => T, Provider<T | undefined>];
 
-const makeGenericContext = <T extends unknown>(): MakeGenericContext<T> => {
+const makeGenericContext = <T extends unknown>(
+  contextName = 'makeGenericContext',
+): MakeGenericContext<T> => {
   // Create a context with a generic parameter or undefined
-  const genericContext = createContext<T | undefined>(undefined);
+  const GenericContext = createContext<T | undefined>(undefined);
 
   // Check if the value provided to the context is defined or throw an error
   const useGenericContext = () => {
-    const contextIsDefined = useContext(genericContext);
+    const contextIsDefined = useContext(GenericContext);
     if (!contextIsDefined) {
-      throw new Error('makeGenericContext must be used within a Provider');
+      throw new Error(`${contextName} must be used within a Provider`);
     }
     return contextIsDefined;
   };
 
-  return [useGenericContext, genericContext.Provider] as const;
+  return [useGenericContext, GenericContext.Provider] as const;
 };
 
 export default makeGenericContext;
