@@ -1,0 +1,11 @@
+export interface {{pascalCase storeName}} {}
+
+export interface {{pascalCase storeName}}State {
+  [K: string]: {{pascalCase storeName}};
+}
+
+export const ADD_{{constantCase storeName}} = 'ADD_{{constantCase storeName}}';
+
+export type Add{{pascalCase storeName}} = { type: typeof ADD_{{constantCase storeName}} };
+
+export type {{pascalCase storeName}}Actions = Add{{pascalCase storeName}};

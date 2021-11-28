@@ -1,3 +1,0 @@
-import { {{pascalCase storeName}}State } from '~/store/{{pascalCase storeName}}/{{pascalCase storeName}}Store';
-
-export const get{{pascalCase storeName}} = (state: {{ pascalCase storeName}}State) => state;
