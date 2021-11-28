@@ -1,15 +1,16 @@
 import { FunctionComponent } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Layout from '~/components/common/Layout';
-
-import HomeRouter from '~/routes/Home/HomeRouter';
+import HomePage from '~/modules/Home/pages/HomePage';
 
 const AppRouter: FunctionComponent = () => (
   <Router>
-    <Layout>
-      <HomeRouter />
-    </Layout>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+      </Route>
+    </Routes>
   </Router>
 );
 
