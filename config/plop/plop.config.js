@@ -2,7 +2,7 @@ const helpers = require('./helpers');
 
 const componentGenerator = require('./generators/component/componentGenerator');
 const moduleGenerator = require('./generators/module/moduleGenerator');
-const routeGenerator = require('./generators/route/routeGenerator');
+const serviceGenerator = require('./generators/service/serviceGenerator');
 const storeGenerator = require('./generators/store/storeGenerator');
 
 /**
@@ -21,6 +21,6 @@ module.exports = function plopFn(plop) {
 
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('module', moduleGenerator);
-  plop.setGenerator('route', routeGenerator);
+  plop.setGenerator('service', serviceGenerator);
   plop.setGenerator('store', storeGenerator);
 };

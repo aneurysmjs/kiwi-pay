@@ -27,6 +27,16 @@ module.exports = function routeActions({ moduleName }) {
         storeName: moduleName,
       },
     },
+    {
+      type: 'addMany',
+      base: `${paths.pathPlopTemplates}/service`,
+      destination: `${paths.src}/services/`,
+      templateFiles: `${paths.pathPlopTemplates}/service/**`,
+      stripExtensions: ['plop'],
+      data: {
+        serviceName: moduleName,
+      },
+    },
   ];
 
   return actions;
