@@ -12,7 +12,8 @@
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "prettier": "prettier --write ./src/**/*.{ts,tsx}",
     "generate": "plop --plopfile config/plop/plop.config.js",
-    "upgrade": "npm-upgrade"
+    "upgrade": "npm-upgrade",
+    "test": "jest"
   },
   "config": {
     "commitizen": {
@@ -20,6 +21,7 @@
     }
   },
   "devDependencies": {
+    "@types/jest": "27.0.3",
     "@types/loadable__component": "5.13.4",
     "@types/node": "16.11.10",
     "@types/ramda": "0.27.53",
@@ -43,12 +45,14 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.3.0",
+    "jest": "27.3.1",
     "node-sass": "4.12.0",
     "npm-upgrade": "3.0.0",
     "parcel-bundler": "1.12.3",
     "plop": "2.7.6",
     "prettier": "2.5.0",
     "sass": "1.22.12",
+    "ts-jest": "27.0.7",
     "typescript": "4.5.2"
   },
   "dependencies": {

@@ -7,7 +7,7 @@
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
-    "types": ["node"],
+    "types": ["jest", "node", "@types/jest"],
     "lib": ["es6", "dom"],
     "downlevelIteration": true,
     "sourceMap": true,
