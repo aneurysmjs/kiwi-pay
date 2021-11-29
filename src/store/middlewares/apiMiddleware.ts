@@ -57,9 +57,13 @@ const apiMiddleware: Middleware<{}, AppState> =  // eslint-disable-line @typescr
           payload: data,
           type: successType,
         });
+        /**
+         * Typescript does not support annotations on the catch variable. There is a proposal to allow this but it is still being discussed
+         * @link https://stackoverflow.com/questions/54649465/how-to-do-try-catch-and-finally-statements-in-typescript
+         */
       } catch (error) {
         dispatch({
-          payload: { error },
+          payload: (error as Error).message,
           type: failureType,
         });
       }
