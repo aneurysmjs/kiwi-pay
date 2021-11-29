@@ -30,14 +30,7 @@ export function usersReducer(state = initialState, action: UsersActions): UsersS
       ...state,
       isLoading: false,
       error: null,
-      users: action.payload.reduce((current, user) => {
-        return {
-          ...current,
-          [user.id]: {
-            ...user,
-          },
-        };
-      }, {}),
+      users: toKeyedObject(action.payload, 'id'),
     };
   }
 
