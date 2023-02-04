@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 
-import type { User } from '~/store/modules/users/types';
+import type { User } from '@/store/modules/users/types';
 
 const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
 

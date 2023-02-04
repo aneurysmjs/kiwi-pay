@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 
-import type { {{pascalCase serviceName}} } from '~/store/modules/{{camelCase serviceName}}/types';
+import type { {{pascalCase serviceName}} } from '@/store/modules/{{camelCase serviceName}}/types';
 
 const {{constantCase serviceName}}_URL = '';
 

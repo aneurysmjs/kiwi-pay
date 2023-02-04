@@ -1,4 +1,4 @@
-import type { AppState } from '~/store/helpers/configureStore';
+import type { AppState } from '@/store/helpers/configureStore';
 
 export interface Action<P> {
   type: string;

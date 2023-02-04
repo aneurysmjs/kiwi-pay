@@ -1,6 +1,6 @@
 import isEmpty from 'ramda/src/isEmpty';
 
-import type { AppState } from '~/store/helpers/configureStore';
+import type { AppState } from '@/store/helpers/configureStore';
 
 export const loadingSelector = (actions: string[]) => (state: AppState) => {
   // returns true only when all actions is not loading

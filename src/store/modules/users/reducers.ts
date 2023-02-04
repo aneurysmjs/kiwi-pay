@@ -1,7 +1,7 @@
 /* eslint-disable default-param-last */
 /* eslint-disable import/prefer-default-export */
 
-import toKeyedObject from '~/utils/toKeyedObject';
+import toKeyedObject from '@/utils/toKeyedObject';
 
 import {
   UsersActions,

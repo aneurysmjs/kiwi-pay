@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import * as usersService from '~/services/usersService';
-import { ApiMetaType } from '~/shared/types';
-import { ASYNC_ACTION_TYPE } from '~/constants';
+import * as usersService from '@/services/usersService';
+import { ApiMetaType } from '@/shared/types';
+import { ASYNC_ACTION_TYPE } from '@/constants';
 import { GET_USERS_REQUEST, GET_USERS_SUCCESS, GET_USERS_FAILURE } from './types';
-import { selectUsers } from '~/store/modules/users/selectors';
+import { selectUsers } from '@/store/modules/users/selectors';
 
 // eslint-disable-next-line import/prefer-default-export
 export function useUserActions() {

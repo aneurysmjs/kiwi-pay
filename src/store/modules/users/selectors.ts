@@ -1,5 +1,5 @@
-import type { AppState } from '~/store/helpers/configureStore';
-import type { UsersState, User } from '~/store/modules/users/types';
+import type { AppState } from '@/store/helpers/configureStore';
+import type { UsersState, User } from '@/store/modules/users/types';
 
 export const selectUsersState = (state: AppState): UsersState => state.users;
 

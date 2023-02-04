@@ -1,13 +1,15 @@
 import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { usersReducer } from '../modules/users/reducers';
+import { gloversReducer } from '../modules/glovers/reducers';
 
-import middlewares from '~/store/middlewares';
+import middlewares from '@/store/middlewares';
 import { apiReducer } from './reducers';
 
 const rootReducer = combineReducers({
   users: usersReducer,
   api: apiReducer,
+  glovers: gloversReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

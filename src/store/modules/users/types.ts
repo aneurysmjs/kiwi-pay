@@ -1,4 +1,4 @@
-import { AsyncState } from '~/shared/types';
+import { AsyncState } from '@/shared/types';
 
 export const GET_USERS_REQUEST = 'GET_USERS_REQUEST';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';

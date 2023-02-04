@@ -24,6 +24,11 @@ const Navigation: FunctionComponent = () => {
               Home
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink to="/glovers" className="nav-link">
+              Glovers
+            </NavLink>
+          </li>
         </ul>
       </div>
       {/* <button className="btn btn-outline-primary">Sign up</button> */}

@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
 import type { Middleware } from 'redux';
 import type { AxiosResponse } from 'axios';
-import type { AppState } from '~/store/helpers/configureStore';
+import type { AppState } from '@/store/helpers/configureStore';
 
-import { ApiMetaType } from '~/shared/types';
+import { ApiMetaType } from '@/shared/types';
 
 const apiMiddleware: Middleware<{}, AppState> =  // eslint-disable-line @typescript-eslint/ban-types
   ({ dispatch, getState }) =>
