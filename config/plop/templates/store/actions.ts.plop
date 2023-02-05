@@ -1,0 +1,16 @@
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { ADD_{{constantCase storeName}} } from './types';
+
+export default function use{{pascalCase storeName}}Actions() {
+  const dispatch = useDispatch();
+
+  const add{{pascalCase storeName}} = useCallback(() => {
+    dispatch({
+      type: ADD_{{constantCase storeName}},
+    });
+  }, [dispatch]);
+
+  return { add{{pascalCase storeName}} };
+}

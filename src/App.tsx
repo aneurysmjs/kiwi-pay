@@ -1,9 +1,8 @@
-import React from 'react';
-
-import Routing from '~/components/routing';
+import { FunctionComponent } from 'react';
+import Routing from '@/routes';
 
 import './assets/scss/styles.scss';
 
-const App = (): JSX.Element => <Routing />;
+const App: FunctionComponent = () => <Routing />;
 
 export default App;

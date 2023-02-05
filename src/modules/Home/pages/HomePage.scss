@@ -1,0 +1,15 @@
+@import '../../../assets/scss/mixins/media';
+@import '../../../assets/scss/mixins/mediaSmall';
+@import '../../../assets/scss/variables';
+
+.home-title {
+  color: red;
+
+  @include mediaSmall() {
+    color: blue;
+  }
+
+  @include media($md) {
+    color: green;
+  }
+}

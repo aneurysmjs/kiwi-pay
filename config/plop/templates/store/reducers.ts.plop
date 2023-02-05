@@ -1,0 +1,11 @@
+import { {{pascalCase storeName}}State, ADD_{{constantCase storeName}}, {{pascalCase storeName}}Actions } from './types';
+
+const initialState: {{pascalCase storeName}}State = {};
+
+export function {{camelCase storeName}}Reducer(state = initialState, action: {{pascalCase storeName}}Actions) {
+  if (action.type === ADD_{{constantCase storeName}}) {
+    return state;
+  }
+
+  return state;
+}

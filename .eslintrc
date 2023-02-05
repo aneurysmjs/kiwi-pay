@@ -2,24 +2,21 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb-base",
-    "plugin:@typescript-eslint/recommended", 
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended",
+    // "prettier/@typescript-eslint",
     "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
   ],
-  "plugins": [
-    "import",
-    "@typescript-eslint", 
-    "react",
-    "react-hooks",
-    "jsx-a11y"
-  ],
+  "plugins": ["import", "@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
@@ -30,15 +27,28 @@
       }
     }
   },
-  "parserOptions":  {
-    "ecmaVersion": 2018,  // Allows for the parsing of modern ECMAScript features
-    "sourceType": "module"  // Allows for the use of imports
+  "parserOptions": {
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of imports
   },
   "rules": {
-    "@typescript-eslint/indent": ["error", 2],
-    "react/jsx-uses-vars": "error",
+    "indent": "off",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "no-restricted-exports": "off",
+    /* @typescript-eslint */
+    // Eslint's `indent` rule and Prettier's indentation styles do not match
+    // they're completely separate implementations
+    // see @link https://github.com/eslint/eslint/issues/10930
+    "@typescript-eslint/indent": "off",
+    /* import */
+    "import/extensions": "off",
+    /* react-hooks */
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    /* react */
+    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 }

@@ -1,0 +1,8 @@
+@import './media';
+@import '../variables';
+
+@mixin mediaSmall() {
+  @include media($sm) {
+    @content;
+  }
+}

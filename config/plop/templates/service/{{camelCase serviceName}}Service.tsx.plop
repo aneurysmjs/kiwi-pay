@@ -1,0 +1,9 @@
+import axios, { AxiosPromise } from 'axios';
+
+import type { {{pascalCase serviceName}} } from '@/store/modules/{{camelCase serviceName}}/types';
+
+const {{constantCase serviceName}}_URL = '';
+
+export const get{{camelCase serviceName}} = (): AxiosPromise<{{pascalCase serviceName}}> => {
+  return axios.get({{constantCase serviceName}}_URL);
+};

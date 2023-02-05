@@ -1,0 +1,9 @@
+import { FunctionComponent } from 'react';
+
+const {{pascalCase moduleName}}Page: FunctionComponent = () => (
+  <div>
+    {{pascalCase moduleName}} page
+  </div>
+);
+
+export default {{pascalCase moduleName}}Page;

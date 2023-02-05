@@ -1,8 +1,8 @@
-import React from 'react';
-import Navigation from '~/components/common/Navigation';
+import { FunctionComponent } from 'react';
+import Navigation from '@/components/common/Navigation';
 
-const Header = (): JSX.Element => (
-  <header className="border-bottom">
+const Header: FunctionComponent = () => (
+  <header className="container-fluid border-bottom">
     <Navigation />
   </header>
 );

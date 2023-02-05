@@ -1,17 +1,20 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware, Store } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { usersReducer } from '../modules/users/reducers';
+import { gloversReducer } from '../modules/glovers/reducers';
 
-import { pricingReducer } from '../modules/pricing/reducers';
+import middlewares from '@/store/middlewares';
+import { apiReducer } from './reducers';
 
 const rootReducer = combineReducers({
-  pricing: pricingReducer,
+  users: usersReducer,
+  api: apiReducer,
+  glovers: gloversReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export default function configureStore() {
-  const middlewares = [thunkMiddleware];
+export default function configureStore(): Store<AppState> {
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
   const store = createStore(rootReducer, composeWithDevTools(middleWareEnhancer));

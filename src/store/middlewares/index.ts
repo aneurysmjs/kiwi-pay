@@ -3,10 +3,10 @@ import thunk from 'redux-thunk';
 import apiMiddleware from './apiMiddleware';
 import logger from './loggerMiddleware';
 
-let middlewares = [thunk, apiMiddleware];
+const middlewares = [thunk, apiMiddleware];
 
 if (process.env.NODE_ENV !== 'production') {
-  middlewares = [...middlewares, logger];
+  middlewares.push(logger);
 }
 
 export default middlewares;
