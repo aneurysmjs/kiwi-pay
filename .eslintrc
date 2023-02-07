@@ -12,14 +12,20 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["import", "@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
   "settings": {
     "react": {
       "version": "detect"
     },
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
+
     "import/resolver": {
       // use <root>/tsconfig.json
       "typescript": {
