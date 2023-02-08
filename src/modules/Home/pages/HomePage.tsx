@@ -1,25 +1,20 @@
 import { FunctionComponent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
 import { loadingSelector, errorMessageSelector } from '@/store/helpers/selectors';
-import { selectUsers } from '@/store/modules/users/selectors';
-import { useUserActions } from '@/store/modules/users/actions';
+import { useAppSelector } from '@/store/hooks';
+import { selectCrypto } from '@/store/modules/crypto/selectors';
+import { useCryptoActions } from '@/store/modules/crypto/actions';
 
 import './HomePage.scss';
 
 const HomePage: FunctionComponent = () => {
-  const users = useSelector(selectUsers);
-  const isLoading = useSelector(loadingSelector(['GET_USERS']));
-  const hasError = useSelector(errorMessageSelector(['GET_USERS']));
-  console.log('isLoading', isLoading);
-  console.log('hasError', hasError);
-  const { getUsers } = useUserActions();
+  const crypto = useAppSelector(selectCrypto);
+  const isLoading = useAppSelector(loadingSelector(['GET_CRYPTO_INFO']));
+  const hasError = useAppSelector(errorMessageSelector(['GET_CRYPTO_INFO']));
+  const { getCryptoCurrentPrice } = useCryptoActions();
 
   useEffect(() => {
-    if (users.length === 0) {
-      getUsers();
-    }
-  }, [getUsers, users.length]);
+    getCryptoCurrentPrice();
+  }, [getCryptoCurrentPrice]);
 
   return (
     <section>
