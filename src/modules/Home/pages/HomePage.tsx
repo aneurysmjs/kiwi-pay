@@ -23,7 +23,9 @@ const HomePage: FunctionComponent = () => {
 
   return (
     <section>
-      <h1 className="home-title">home</h1>
+      <h1 data-testid="page-title" className="home-title">
+        home
+      </h1>
     </section>
   );
 };
