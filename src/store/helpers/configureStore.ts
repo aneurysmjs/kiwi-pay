@@ -1,8 +1,8 @@
-import { legacy_createStore as createStore, combineReducers, applyMiddleware, Store } from 'redux';
+import { legacy_createStore as createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { usersReducer } from '../modules/users/reducers';
 
 import middlewares from '@/store/middlewares';
+import { usersReducer } from '@/store/modules/users/reducers';
 import { apiReducer } from './reducers';
 
 const rootReducer = combineReducers({
@@ -10,9 +10,7 @@ const rootReducer = combineReducers({
   api: apiReducer,
 });
 
-export type AppState = ReturnType<typeof rootReducer>;
-
-export default function configureStore(): Store<AppState> {
+export default function configureStore() {
   const middleWareEnhancer = applyMiddleware(...middlewares);
 
   const store = createStore(rootReducer, composeWithDevTools(middleWareEnhancer));
