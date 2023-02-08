@@ -17,7 +17,7 @@ const initialState: UsersState = {
   error: null,
 };
 
-export function usersReducer(state = initialState, action: UsersActions): UsersState {
+export function usersReducer(state = initialState, action: UsersActions) {
   if (action.type === GET_USERS_REQUEST) {
     return {
       ...state,
