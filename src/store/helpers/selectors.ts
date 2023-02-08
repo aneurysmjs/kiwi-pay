@@ -1,13 +1,13 @@
 import isEmpty from 'ramda/src/isEmpty';
 
-import type { AppState } from '@/store/helpers/configureStore';
+import type { RootState } from '@/store';
 
-export const loadingSelector = (actions: string[]) => (state: AppState) => {
+export const loadingSelector = (actions: string[]) => (state: RootState) => {
   // returns true only when all actions is not loading
   return actions.some((action) => state.api.loading[action]);
 };
 
-export const errorMessageSelector = (actions: string[]) => (state: AppState) => {
+export const errorMessageSelector = (actions: string[]) => (state: RootState) => {
   // returns the first error messages for actions
   // * We assume when any request fails on a page that
   //   requires multiple API calls, we shows the first error
