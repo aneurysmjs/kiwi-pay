@@ -1,15 +1,22 @@
-@import '../../../assets/scss/mixins/media';
-@import '../../../assets/scss/mixins/mediaSmall';
-@import '../../../assets/scss/variables';
+// extra small $xs: 0;
+// small       $sm: 576px;
+// medium      $md: 768px;
+// large       $lg: 992px;
+// extra large $xl: 1200px;
 
 .home-title {
   color: red;
+  text-align: center;
 
-  @include mediaSmall() {
+  @media (min-width: 576px) {
     color: blue;
   }
 
-  @include media($md) {
+  @media (min-width: 768px) {
     color: green;
+  }
+
+  @media (min-width: 992px) {
+    color: white;
   }
 }

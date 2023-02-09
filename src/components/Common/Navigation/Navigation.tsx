@@ -5,7 +5,7 @@ const Navigation: FunctionComponent = () => {
   return (
     <nav className="navbar navbar-expand-md">
       <NavLink to="/" className="navbar-brand">
-        <h5 className="font-weight-normal m-0">Kiwi Pay</h5>
+        <h5 className="font-weight-normal m-0">Dummy</h5>
       </NavLink>
       <button
         className="navbar-toggler"
