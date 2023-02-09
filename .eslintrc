@@ -10,7 +10,8 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -19,7 +20,8 @@
     "jsx-a11y",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "jest"
   ],
   "settings": {
     "react": {
