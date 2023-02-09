@@ -1,7 +1,10 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 const Navigation: FunctionComponent = () => {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <nav className="navbar navbar-expand-md">
       <NavLink to="/" className="navbar-brand">
@@ -14,10 +17,17 @@ const Navigation: FunctionComponent = () => {
         aria-controls="navbarCollapse"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        onClick={(): void => {
+          setOpen(!isOpen);
+        }}
       >
         <span className="navbar-toggler-icon" />
       </button>
-      <div className="navbar-collapse">
+      <div
+        className={classNames('collapse navbar-collapse', {
+          show: isOpen,
+        })}
+      >
         <ul className="navbar nav ml-auto">
           <li className="nav-item">
             <NavLink to="/" className="nav-link">
@@ -31,7 +41,6 @@ const Navigation: FunctionComponent = () => {
           </li>
         </ul>
       </div>
-      {/* <button className="btn btn-outline-primary">Sign up</button> */}
     </nav>
   );
 };
