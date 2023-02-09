@@ -10,9 +10,10 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended"
   ],
-  "plugins": ["import", "@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
+  "plugins": ["import", "@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest"],
   "settings": {
     "react": {
       "version": "detect"
