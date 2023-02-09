@@ -6,7 +6,7 @@ import { usersReducer } from '@/store/modules/users/reducers';
 import { cryptoReducer } from '@/store/modules/crypto/reducers';
 import { apiReducer } from './reducers';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   users: usersReducer,
   api: apiReducer,
   crypto: cryptoReducer,
