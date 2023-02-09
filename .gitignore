@@ -72,3 +72,6 @@ dist/
 # Ignore Mac DS_Store files
 .DS_Store
 **/.DS_Store
+/test-results/
+/playwright-report/
+/playwright/.cache/

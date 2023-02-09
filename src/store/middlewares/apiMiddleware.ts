@@ -1,11 +1,11 @@
 /* eslint-disable consistent-return */
 import type { Middleware } from 'redux';
 import type { AxiosResponse } from 'axios';
-import type { AppState } from '@/store/helpers/configureStore';
+import type { RootState } from '@/store';
 
 import { ApiMetaType } from '@/shared/types';
 
-const apiMiddleware: Middleware<{}, AppState> =  // eslint-disable-line @typescript-eslint/ban-types
+const apiMiddleware: Middleware =
   ({ dispatch, getState }) =>
   (next) =>
   (action) => {
@@ -23,7 +23,7 @@ const apiMiddleware: Middleware<{}, AppState> =  // eslint-disable-line @typescr
     const { payload = {} } = action;
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { types, callAPI, shouldCallAPI = (state: AppState): boolean => true } = meta;
+    const { types, callAPI, shouldCallAPI = (state: RootState): boolean => true } = meta;
 
     if (
       !Array.isArray(types) ||
