@@ -33,7 +33,6 @@
   },
   "rules": {
     "indent": "off",
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "no-restricted-exports": "off",
     /* @typescript-eslint */
     // Eslint's `indent` rule and Prettier's indentation styles do not match
@@ -57,8 +56,10 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["playwright.config.ts", "**/*.{ts,tsx}"]
+        "devDependencies": true
       }
-    ]
+    ],
+
+    "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }
