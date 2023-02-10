@@ -5,6 +5,7 @@ import Layout from '@/components/common/Layout';
 import Loader from '@/components/common/Loader';
 import HomePage from '@/modules/Home/pages/HomePage';
 const AdminPage = lazy(() => import('@/modules/Admin/pages/AdminPage'));
+const UsersPage = lazy(() => import('@/modules/Users/pages/UsersPage'));
 
 const AppRouter: FunctionComponent = () => (
   <Router>
@@ -16,6 +17,14 @@ const AppRouter: FunctionComponent = () => (
           element={
             <Suspense fallback={<Loader />}>
               <AdminPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <Suspense fallback={<Loader />}>
+              <UsersPage />
             </Suspense>
           }
         />
