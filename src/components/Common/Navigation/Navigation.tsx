@@ -35,8 +35,8 @@ const Navigation: FunctionComponent = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/princing" className="nav-link">
-              Pricing
+            <NavLink to="/admin" className="nav-link">
+              Admin
             </NavLink>
           </li>
         </ul>

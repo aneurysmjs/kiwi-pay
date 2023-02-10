@@ -4,23 +4,7 @@ export interface Time {
   updateduk: string;
 }
 
-export interface Usd {
-  code: string;
-  symbol: string;
-  rate: string;
-  description: string;
-  rate_float: number;
-}
-
-export interface Gbp {
-  code: string;
-  symbol: string;
-  rate: string;
-  description: string;
-  rate_float: number;
-}
-
-export interface Eur {
+export interface BpiData {
   code: string;
   symbol: string;
   rate: string;
@@ -29,9 +13,9 @@ export interface Eur {
 }
 
 export interface Bpi {
-  USD: Usd;
-  GBP: Gbp;
-  EUR: Eur;
+  USD: BpiData;
+  GBP: BpiData;
+  EUR: BpiData;
 }
 
 export interface Crypto {
@@ -41,9 +25,7 @@ export interface Crypto {
   bpi: Bpi;
 }
 
-export interface CryptoState {
-  [K: string]: Crypto;
-}
+export interface CryptoState extends Crypto {}
 
 export const GET_CRYPTO_INFO_REQUEST = 'GET_CRYPTO_INFO_REQUEST';
 export const GET_CRYPTO_INFO_SUCCESS = 'GET_CRYPTO_INFO_SUCCESS';
