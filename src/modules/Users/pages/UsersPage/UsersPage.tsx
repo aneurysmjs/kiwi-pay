@@ -5,8 +5,9 @@ import { selectUsers } from '@/store/modules/users/selectors';
 import { loadingSelector, errorMessageSelector } from '@/store/helpers/selectors';
 import { useUserActions } from '@/store/modules/users/actions';
 
-import UsersForm from '@/modules/Users/components/UsersForm/UsersForm';
+// import UsersForm from '@/modules/Users/components/UsersForm/UsersForm';
 import UsersTable from '@/modules/Users/components/UsersTable';
+import type { User } from '@/store/modules/users/types';
 
 const UsersPage: FunctionComponent = () => {
   const users = useAppSelector(selectUsers);
@@ -14,7 +15,7 @@ const UsersPage: FunctionComponent = () => {
   const hasError = useAppSelector(errorMessageSelector(['GET_USERS']));
   console.log('isLoading', isLoading);
   console.log('hasError', hasError);
-  const { getUsers } = useUserActions();
+  const { getUsers, sortUsers } = useUserActions();
 
   useEffect(() => {
     if (users.length === 0) {
@@ -22,20 +23,18 @@ const UsersPage: FunctionComponent = () => {
     }
   }, [users.length]);
 
-  const handleSubmit = () => {};
-
   return (
     <section>
       <header>
         <h2 className="text-center my-3">Users</h2>
       </header>
 
-      <div className="w-25 mx-auto mb-3">
+      {/* <div className="w-25 mx-auto mb-3">
         <UsersForm onSubmit={handleSubmit} />
-      </div>
+      </div> */}
 
       <div className="w-50 mx-auto mb-3">
-        <UsersTable users={users} />
+        <UsersTable users={users} onEdit={() => {}} />
       </div>
     </section>
   );
