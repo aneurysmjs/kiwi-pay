@@ -6,6 +6,7 @@ import Loader from '@/components/common/Loader';
 import HomePage from '@/modules/Home/pages/HomePage';
 const AdminPage = lazy(() => import('@/modules/Admin/pages/AdminPage'));
 const UsersPage = lazy(() => import('@/modules/Users/pages/UsersPage'));
+const EmployeesPage = lazy(() => import('@/modules/Employees/pages/EmployeesPage'));
 
 const AppRouter: FunctionComponent = () => (
   <Router>
@@ -25,6 +26,14 @@ const AppRouter: FunctionComponent = () => (
           element={
             <Suspense fallback={<Loader />}>
               <UsersPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/employees"
+          element={
+            <Suspense fallback={<Loader />}>
+              <EmployeesPage />
             </Suspense>
           }
         />
